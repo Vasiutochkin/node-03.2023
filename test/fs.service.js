@@ -1,7 +1,7 @@
 const fs = require('node:fs/promises');
 const path = require('node:path');
 
-const dbPath = path.join(process.cwd(), 'crs', 'users.json')
+const dbPath = path.join(process.cwd(), 'test', 'users.json')
 const reader = async () => {
     const buffer = await fs.readFile(dbPath);
     const data = buffer.toString();
@@ -9,7 +9,7 @@ const reader = async () => {
 };
 
 const writer = async (users) => {
-    const buffer = await fs.readFile(dbPath, JSON.stringify(users));
+    await fs.writeFile(dbPath, JSON.stringify(users));
 };
 
 module.exports = {
